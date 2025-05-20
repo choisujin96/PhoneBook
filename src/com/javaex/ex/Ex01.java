@@ -47,9 +47,7 @@ public class Ex01 {
 			
 			 pList.add(p);
 		
-			
 		}
-		
 		
 		Person p00 = pList.get(0);
 		Person p01 = pList.get(1);
@@ -76,9 +74,11 @@ public class Ex01 {
 			
 			if(menuNo==1) {
 				System.out.println("<1.리스트>");
-				for (Person p : pList) {
-					System.out.println(p.getName()+p.getHp()+p.getCompany());
-				
+				for(int i=0; i<pList.size(); i++) {
+						System.out.print(i+1);
+					System.out.println("."+ pList.get(i).getName() + "\t" + 
+							pList.get(i).getHp() + "\t" + pList.get(i).getCompany());
+					
 				}
 			
 		
