@@ -1,9 +1,12 @@
 package com.javaex.ex;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,27 +19,22 @@ public class Ex01 {
 		
 		List<Person> pList = new ArrayList<Person>();
 		
+	
 		
 		Reader fr = new FileReader("C:\\javaStudy\\PhoneDB.txt");
 		BufferedReader br = new BufferedReader(fr);	
-				
+		
 		
 		while(true) {
 			String str = br.readLine();
-		
+			
+			
 			if(str == null) {
 				break;
 			}
-			//System.out.println(str);
 		
 			String[] sArray = str.split(",");
 		
-			/*
-			System.out.println(sArray[0]);
-			System.out.println(sArray[1]);
-			System.out.println(sArray[2]);
-			System.out.println("********************");
-		 	*/
 			
 			String name = sArray[0];
 			String hp = sArray[1];
@@ -49,15 +47,6 @@ public class Ex01 {
 		
 		}
 		
-		Person p00 = pList.get(0);
-		Person p01 = pList.get(1);
-		Person p02 = pList.get(2);
-
-		/*
-		for (Person p : pList) {
-			System.out.println(p.getName()+p.getHp()+p.getCompany());
-		}
-		*/
 		
 		
 		while(true) {
@@ -81,30 +70,60 @@ public class Ex01 {
 					
 				}
 			
-		
 				continue;
 			
+				
 				}else if(menuNo==2) {
 					System.out.println("<2.등록>");
 					
+					Writer fw = new FileWriter("C:\\javaStudy\\PhoneDB.txt");
+					BufferedWriter bw = new BufferedWriter(fw);		
+					
+					System.out.print("이름:");
+					String name = sc.next(); 
+					
+					System.out.print("핸드폰:");
+					String hp = sc.next();
+					
+					System.out.print("회사:");
+					String company = sc.next();
+					Person pp = new Person(name, hp,company);
+					
+					pList.add(pp);
+					
+					
+					for(int i=0; i<pList.size();i++) {
+						bw.write(pList.get(i).getName() + "," + pList.get(i).getHp() + ","
+								+ pList.get(i).getCompany()); 
+						bw.newLine();
+							
+					}
+					
+					bw.close();
+					
+					System.out.println("[등록되었습니다.]");
 					continue;
 				 
+					
 				}else if(menuNo==3) {
 					System.out.println("<3.삭제>");
 					
 					continue;
 					 
+					
 				 }else if(menuNo==4) {
 					System.out.println("<4.검색>");
 					
 					continue;
 				 
+					
 				 }else if(menuNo==5) {
 					System.out.println("<5.종료>");
 					
 					System.out.println("*****이용해주셔서 감사합니다.*******");
 					break;
 			
+					
 				 } else {
 					System.out.println("다시 입력해주세요.");
 					continue;
@@ -113,7 +132,7 @@ public class Ex01 {
 		}
 	}	
 		
-} //while끝
+}
 		
 
 	
