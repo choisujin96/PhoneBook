@@ -108,10 +108,33 @@ public class Ex01 {
 				}else if(menuNo==3) {
 					System.out.println("<3.삭제>");
 					
-					continue;
-					 
+					Writer fw = new FileWriter("C:\\javaStudy\\PhoneDB.txt");
+					BufferedWriter bw = new BufferedWriter(fw);		
 					
-				 }else if(menuNo==4) {
+					System.out.print("이름:");
+					String name = sc.next(); 
+					
+					System.out.print("핸드폰:");
+					String hp = sc.next();
+					
+					System.out.print("회사:");
+					String company = sc.next();
+					Person pp = new Person(name, hp,company);
+					
+					pList.add(pp);
+					
+					
+					for(int i=0; i<pList.size();i++) {
+						bw.write(pList.get(i).getName() + "," + pList.get(i).getHp() + ","
+								+ pList.get(i).getCompany()); 
+						bw.newLine();
+					
+					continue;
+					
+					
+					System.out.println("삭제되었습니다.");
+					
+				}else if(menuNo==4) {
 					System.out.println("<4.검색>");
 					
 					continue;
