@@ -18,7 +18,6 @@ public class Ex01 {
 		Scanner sc = new Scanner(System.in);
 		
 		List<Person> pList = new ArrayList<Person>();
-		
 	
 		
 		Reader fr = new FileReader("C:\\javaStudy\\PhoneDB.txt");
@@ -107,32 +106,30 @@ public class Ex01 {
 					
 				}else if(menuNo==3) {
 					System.out.println("<3.삭제>");
-					
+				
+
 					Writer fw = new FileWriter("C:\\javaStudy\\PhoneDB.txt");
 					BufferedWriter bw = new BufferedWriter(fw);		
 					
-					System.out.print("이름:");
-					String name = sc.next(); 
+					System.out.print(">번호: ");
+					int num = sc.nextInt(); 
 					
-					System.out.print("핸드폰:");
-					String hp = sc.next();
 					
-					System.out.print("회사:");
-					String company = sc.next();
-					Person pp = new Person(name, hp,company);
-					
-					pList.remove(pp);
+					pList.remove(pList.get(num-1));
 					
 					
 					for(int i=0; i<pList.size();i++) {
 						bw.write(pList.get(i).getName() + "," + pList.get(i).getHp() + ","
 								+ pList.get(i).getCompany()); 
 						bw.newLine();
+							
+					}	
+				
+					bw.close();
+					System.out.println("[삭제되었습니다.]");
 					
 					continue;
 					
-					
-					System.out.println("삭제되었습니다.");
 					
 				}else if(menuNo==4) {
 					System.out.println("<4.검색>");
