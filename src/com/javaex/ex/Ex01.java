@@ -121,7 +121,7 @@ public class Ex01 {
 					String company = sc.next();
 					Person pp = new Person(name, hp,company);
 					
-					pList.add(pp);
+					pList.remove(pp);
 					
 					
 					for(int i=0; i<pList.size();i++) {
